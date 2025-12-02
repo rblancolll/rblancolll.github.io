@@ -6,100 +6,307 @@
     <title>Portafolio | Romeo Blanco</title>
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: #f5f6fa;
+            color: #333;
         }
 
         header {
-            background: #1e1e2f;
+            background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
         }
 
         header img {
-            width: 120px;
-            height: 120px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            margin-bottom: 15px;
-            border: 3px solid white;
+            margin-bottom: 20px;
+            border: 4px solid white;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         header h1 {
-            margin: 10px 0;
-            font-size: 32px;
+            margin: 15px 0;
+            font-size: 38px;
+            font-weight: 600;
         }
 
         header p {
-            max-width: 700px;
-            margin: auto;
-            line-height: 1.6;
+            max-width: 750px;
+            margin: 20px auto;
+            line-height: 1.7;
+            font-size: 17px;
+            opacity: 0.95;
+        }
+
+        .btns {
+            margin-top: 30px;
         }
 
         .btns a {
             display: inline-block;
             margin: 10px;
+            padding: 12px 28px;
+            background: #5865f2;
+            color: white;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .btns a:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
+
+        .section {
+            padding: 60px 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: #1e1e2f;
+            font-weight: 600;
+        }
+
+        .section-subtitle {
+            color: #666;
+            margin-bottom: 40px;
+            font-size: 16px;
+        }
+
+        .project-hero {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+        }
+
+        .project-hero h3 {
+            font-size: 28px;
+            color: #1e1e2f;
+            margin-bottom: 15px;
+        }
+
+        .project-hero .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .tag {
+            padding: 6px 14px;
+            background: #e3e7ff;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #4752c4;
+        }
+
+        .project-description {
+            line-height: 1.8;
+            color: #555;
+            margin: 20px 0;
+        }
+
+        .project-links {
+            margin-top: 25px;
+        }
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 15px;
             padding: 10px 20px;
             background: #5865f2;
             color: white;
             border-radius: 6px;
             text-decoration: none;
             transition: 0.3s;
+            font-size: 14px;
         }
 
-        .btns a:hover {
+        .project-links a:hover {
             background: #4752c4;
+            transform: translateY(-2px);
         }
 
-        .section {
-            padding: 40px 20px;
-            max-width: 1000px;
-            margin: auto;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
         }
 
-        .section h2 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .project-card {
+        .feature-card {
             background: white;
-            padding: 20px;
+            padding: 30px;
             border-radius: 12px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+            transition: 0.3s;
         }
 
-        .project-card img {
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .feature-card h4 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #1e1e2f;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        .screenshots-section {
+            margin: 50px 0;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .screenshot-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            transition: 0.3s;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .screenshot-placeholder {
             width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
+            height: 220px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .screenshot-caption {
+            padding: 18px;
+            font-size: 14px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .tech-stack {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.06);
+        }
+
+        .tech-stack h3 {
+            font-size: 24px;
+            margin-bottom: 25px;
+            color: #1e1e2f;
+        }
+
+        .tech-category {
+            margin-bottom: 25px;
+        }
+
+        .tech-category h4 {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tech-tag {
+            padding: 8px 16px;
+            background: #f0f0f5;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #333;
+            border: 1px solid #e0e0e8;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 15px;
         }
 
         .skill {
-            padding: 8px 15px;
+            padding: 12px 20px;
             background: #e3e7ff;
-            border-radius: 6px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 600;
             color: #333;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            background: #5865f2;
+            color: white;
+            transform: translateY(-2px);
         }
 
         footer {
             background: #1e1e2f;
             color: white;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
-            margin-top: 40px;
+            margin-top: 60px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 28px;
+            }
+
+            .section h2 {
+                font-size: 26px;
+            }
+
+            .project-hero {
+                padding: 25px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -109,11 +316,10 @@
 <!-- HERO -->
 <header>
     <img src="foto.jpg" alt="Foto Perfil">
-    <h1>Romeo Blanco</h1>
+    <h1>Romeo Alexander Blanco</h1>
     <p>
-        Egresado de Ingeniería en Sistemas de Información y Ciencias de la Computación (cierre de pensum),
-        con experiencia práctica en desarrollo web y gestión de bases de datos mediante proyectos reales y prácticas profesionales.
-        Proactivo, orientado al trabajo en equipo y comprometido con la innovación y el aprendizaje continuo.
+        Ingeniero en Sistemas de Información y Ciencias de la Computación, especializado en desarrollo web full-stack y gestión de sistemas logísticos. 
+        Experiencia en Laravel, Vue.js, MySQL y soluciones de trazabilidad en tiempo real para optimización de procesos empresariales.
     </p>
 
     <div class="btns">
@@ -123,52 +329,212 @@
     </div>
 </header>
 
-<!-- PROYECTOS -->
+<!-- PROYECTO PRINCIPAL: SITRA -->
 <div class="section">
-    <h2>Proyectos Destacados</h2>
+    <h2>Proyecto Destacado</h2>
+    <p class="section-subtitle">Sistema integral desarrollado como proyecto de graduación</p>
 
-    <div class="project-card">
-        <img src="proyecto1.png" alt="">
-        <h3>Tienda Online (Laravel)</h3>
-        <p>Sistema completo con CRUD de productos, roles de usuario, autenticación y MySQL.</p>
-        <a href="#">Ver en GitHub</a> |
-        <a href="#">Ver sitio</a>
+    <div class="project-hero">
+        <h3>SITRA - Sistema Integral de Transporte y Rastreo Automatizado</h3>
+        
+        <div class="tags">
+            <span class="tag">Laravel</span>
+            <span class="tag">Vue.js</span>
+            <span class="tag">MySQL</span>
+            <span class="tag">React Native</span>
+            <span class="tag">GPS Tracking</span>
+            <span class="tag">AWS</span>
+        </div>
+
+        <div class="project-description">
+            <p>
+                Sistema web y móvil desarrollado para la empresa Chiquita que optimiza la gestión logística del transporte de productos agrícolas. 
+                SITRA automatiza la asignación de recursos, gestión de cortes, seguimiento GPS en tiempo real y generación de reportes operativos, 
+                reduciendo errores manuales en un 80% y mejorando la eficiencia operativa significativamente.
+            </p>
+        </div>
+
+        <div class="project-links">
+            <a href="https://github.com/rblancolll/SITRA" target="_blank">Ver Repositorio</a>
+            <a href="#" target="_blank">Documentación PDF</a>
+            <a href="#" target="_blank">Demo en Vivo</a>
+        </div>
     </div>
 
-    <div class="project-card">
-        <img src="proyecto2.png" alt="">
-        <h3>Tienda de Perfumes (JavaScript + MySQL)</h3>
-        <p>Gestión de productos y base de datos con consultas SQL y JS en frontend.</p>
-        <a href="#">Ver en GitHub</a>
+    <!-- CARACTERÍSTICAS PRINCIPALES -->
+    <h3 style="margin: 50px 0 30px 0; font-size: 26px; color: #1e1e2f;">Características Principales</h3>
+    
+    <div class="features-grid">
+        <div class="feature-card">
+            <h4>🚛 Gestión de Transporte</h4>
+            <p>Control completo de transportistas, pilotos, camiones y contenedores con validación automática de documentación mediante API Maycom.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>📊 Sistema de Cortes</h4>
+            <p>Gestión de pedidos y cortes de carga con validación de SKU, altura y asignación inteligente de recursos basada en disponibilidad.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>📍 Tracking en Tiempo Real</h4>
+            <p>Seguimiento GPS de unidades con integración de múltiples plataformas (TPS, Giron, Kevy, Caleb) para monitoreo continuo.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>👥 Control de Roles y Permisos</h4>
+            <p>Sistema robusto de autenticación con JWT y gestión de permisos mediante Spatie para Admin, Planner, Transportista y Piloto.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>📱 Aplicación Móvil</h4>
+            <p>App React Native para pilotos con gestión de incidencias, actualización de ubicación y consulta de asignaciones en tiempo real.</p>
+        </div>
+
+        <div class="feature-card">
+            <h4>📈 Reportes y Analytics</h4>
+            <p>Generación automática de reportes operativos en Excel, estadísticas de eficiencia y exportación de datos para análisis.</p>
+        </div>
     </div>
 
-    <div class="project-card">
-        <img src="proyecto3.png" alt="">
-        <h3>App Android - MiPrimeraAppAndroid</h3>
-        <p>Aplicación Android básica en Java, con actividades y diseño intuitivo.</p>
-        <a href="https://github.com/rblancolll/MiPrimeraAppAndroid">Ver en GitHub</a>
+    <!-- STACK TECNOLÓGICO -->
+    <div class="tech-stack">
+        <h3>Stack Tecnológico Utilizado</h3>
+        
+        <div class="tech-category">
+            <h4>Backend</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Laravel 10</span>
+                <span class="tech-tag">PHP 8.1+</span>
+                <span class="tech-tag">MySQL 8</span>
+                <span class="tech-tag">JWT Authentication</span>
+                <span class="tech-tag">Spatie Permissions</span>
+                <span class="tech-tag">RESTful API</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h4>Frontend Web</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">Vue.js 3</span>
+                <span class="tech-tag">Tailwind CSS</span>
+                <span class="tech-tag">Axios</span>
+                <span class="tech-tag">Chart.js</span>
+                <span class="tech-tag">ExcelJS</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h4>Aplicación Móvil</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">React Native</span>
+                <span class="tech-tag">Geolocalización GPS</span>
+                <span class="tech-tag">Cámara y Multimedia</span>
+                <span class="tech-tag">Android 9+</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h4>Infraestructura y DevOps</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">AWS EC2</span>
+                <span class="tech-tag">Ubuntu Server</span>
+                <span class="tech-tag">Apache/Nginx</span>
+                <span class="tech-tag">SSL/HTTPS</span>
+                <span class="tech-tag">GitHub</span>
+            </div>
+        </div>
+
+        <div class="tech-category">
+            <h4>Integraciones</h4>
+            <div class="tech-tags">
+                <span class="tech-tag">API Maycom (Validación de licencias)</span>
+                <span class="tech-tag">Google Maps API</span>
+                <span class="tech-tag">Sistemas GPS múltiples</span>
+                <span class="tech-tag">Notificaciones Push</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CAPTURAS DE PANTALLA -->
+    <div class="screenshots-section">
+        <h3 style="font-size: 26px; margin-bottom: 15px; color: #1e1e2f;">Vistas del Sistema</h3>
+        <p style="color: #666; margin-bottom: 30px;">Interfaces diseñadas para optimizar la experiencia del usuario</p>
+        
+        <div class="screenshot-grid">
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">Dashboard Principal</div>
+                <div class="screenshot-caption">Vista general con métricas operativas en tiempo real</div>
+            </div>
+
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">Gestión de Cortes</div>
+                <div class="screenshot-caption">Módulo de planificación y asignación de pedidos</div>
+            </div>
+
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">Tracking GPS</div>
+                <div class="screenshot-caption">Seguimiento en tiempo real de unidades de transporte</div>
+            </div>
+
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">Gestión de Usuarios</div>
+                <div class="screenshot-caption">Control de roles, permisos y documentación</div>
+            </div>
+
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">Reportes Operativos</div>
+                <div class="screenshot-caption">Generación y exportación de reportes en Excel</div>
+            </div>
+
+            <div class="screenshot-item">
+                <div class="screenshot-placeholder">App Móvil</div>
+                <div class="screenshot-caption">Interfaz móvil para pilotos y gestión de incidencias</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- RESULTADOS E IMPACTO -->
+    <div class="tech-stack">
+        <h3>Resultados e Impacto</h3>
+        <div class="project-description">
+            <ul style="list-style: none; padding: 0;">
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">✅ <strong>80% de reducción</strong> en errores manuales de asignación</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">✅ <strong>69% de mejora</strong> en claridad de asignaciones para pilotos</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">✅ <strong>70% de aumento</strong> en satisfacción general del usuario</li>
+                <li style="padding: 12px 0; border-bottom: 1px solid #eee;">✅ <strong>Reducción significativa</strong> en tiempos de coordinación logística</li>
+                <li style="padding: 12px 0;">✅ <strong>Trazabilidad completa</strong> del ciclo de transporte desde origen hasta destino</li>
+            </ul>
+        </div>
     </div>
 </div>
 
 <!-- HABILIDADES -->
 <div class="section">
-    <h2>Habilidades</h2>
+    <h2>Habilidades Técnicas</h2>
+    <p class="section-subtitle">Tecnologías y herramientas con las que trabajo</p>
 
     <div class="skills">
         <div class="skill">PHP</div>
         <div class="skill">Laravel</div>
         <div class="skill">JavaScript</div>
+        <div class="skill">Vue.js</div>
+        <div class="skill">React Native</div>
         <div class="skill">MySQL</div>
+        <div class="skill">PostgreSQL</div>
         <div class="skill">Node.js</div>
         <div class="skill">Java</div>
         <div class="skill">Git & GitHub</div>
-        <div class="skill">Linux básico</div>
-        <div class="skill">Active Directory</div>
+        <div class="skill">Linux</div>
+        <div class="skill">AWS</div>
+        <div class="skill">API REST</div>
+        <div class="skill">JWT</div>
+        <div class="skill">Tailwind CSS</div>
+        <div class="skill">SCRUM</div>
     </div>
 </div>
 
 <footer>
-    © 2025 Romeo Blanco – Portafolio Profesional
+    © 2025 Romeo Alexander Blanco – Portafolio Profesional
 </footer>
 
 </body>
