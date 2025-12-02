@@ -639,50 +639,16 @@
 </div>
         
         <!-- App Móvil -->
-<!-- App Móvil con Carrusel -->
 <div class="screenshot-item">
-    <div class="carousel-container">
-        <!-- Imagen 1: Pantalla Principal -->
-        <img src="https://i.ibb.co/pB315HFM/1000432027.jpg" 
-             alt="App Móvil - Pantalla Principal" 
-             class="carousel-slide active"
-             onclick="openLightbox(this)"
-             data-caption="App Móvil: Pantalla principal con turno activo y notificaciones">
-        
-        <!-- Imagen 2: Reportar Incidencia -->
-        <img src="https://i.ibb.co/VcRp1MJb/1000432028.jpg" 
-             alt="App Móvil - Reportar Incidencia" 
-             class="carousel-slide"
-             onclick="openLightbox(this)"
-             data-caption="App Móvil: Sistema de reporte de incidencias con categorías">
-        
-        <!-- Imagen 3: Mi Turno -->
-        <img src="https://i.ibb.co/y7hBdtk/1000432029.jpg" 
-             alt="App Móvil - Mi Turno" 
-             class="carousel-slide"
-             onclick="openLightbox(this)"
-             data-caption="App Móvil: Vista detallada del turno con ubicación y actualización GPS">
-        
-        <!-- Imagen 4: Detalle de Incidencia -->
-        <img src="https://i.ibb.co/XrXM05tk/1000432030.jpg" 
-             alt="App Móvil - Detalle Incidencia" 
-             class="carousel-slide"
-             onclick="openLightbox(this)"
-             data-caption="App Móvil: Formulario de incidencia con ubicación y adjuntar imágenes">
-        
-        <!-- Controles del carrusel -->
-        <button class="carousel-prev" onclick="changeSlide(-1, this)">❮</button>
-        <button class="carousel-next" onclick="changeSlide(1, this)">❯</button>
-        
-        <!-- Indicadores -->
-        <div class="carousel-indicators">
-            <span class="carousel-dot active" onclick="currentSlide(0, this)"></span>
-            <span class="carousel-dot" onclick="currentSlide(1, this)"></span>
-            <span class="carousel-dot" onclick="currentSlide(2, this)"></span>
-            <span class="carousel-dot" onclick="currentSlide(3, this)"></span>
-        </div>
+    <img src="https://i.ibb.co/pB315HFM/1000432027.jpg" 
+         alt="Aplicación Móvil" 
+         class="screenshot-image"
+         onclick="openLightboxCarousel(0)"
+         data-caption="Aplicación móvil: Gestión de turnos, incidencias y ubicación GPS en tiempo real">
+    <div class="screenshot-caption">Aplicación móvil para pilotos - 4 vistas principales (click para ver todas)</div>
+</div>
+
     </div>
-    <div class="screenshot-caption">Aplicación móvil: Gestión de turnos, incidencias y ubicación GPS en tiempo real</div>
 </div>
     </div>
 </div>
@@ -734,6 +700,8 @@
 <!-- Lightbox Modal -->
 <div id="lightbox" class="lightbox" onclick="closeLightbox()">
     <span class="lightbox-close">&times;</span>
+    <button class="carousel-prev" onclick="event.stopPropagation(); prevImage()" style="position: fixed;">❮</button>
+    <button class="carousel-next" onclick="event.stopPropagation(); nextImage()" style="position: fixed;">❯</button>
     <img id="lightbox-img" class="lightbox-content" src="" alt="">
     <div id="lightbox-caption" class="lightbox-caption"></div>
 </div>
@@ -776,6 +744,49 @@
     document.getElementById('lightbox-img').addEventListener('click', function(event) {
         event.stopPropagation();
     });
+
+    // Array de imágenes de la app móvil
+const appImages = [
+    { src: 'https://i.ibb.co/pB315HFM/1000432027.jpg', caption: 'App Móvil: Pantalla principal con turno activo y notificaciones' },
+    { src: 'https://i.ibb.co/VcRp1MJb/1000432028.jpg', caption: 'App Móvil: Sistema de reporte de incidencias con categorías' },
+    { src: 'https://i.ibb.co/y7hBdtk/1000432029.jpg', caption: 'App Móvil: Vista detallada del turno con ubicación GPS' },
+    { src: 'https://i.ibb.co/XrXM05tk/1000432030.jpg', caption: 'App Móvil: Formulario de incidencia con ubicación y adjuntar imágenes' }
+];
+
+let currentImageIndex = 0;
+
+function openLightboxCarousel(index) {
+    currentImageIndex = index;
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const caption = document.getElementById('lightbox-caption');
+    
+    lightboxImg.src = appImages[currentImageIndex].src;
+    caption.textContent = appImages[currentImageIndex].caption + ` (${currentImageIndex + 1}/4)`;
+    lightbox.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function nextImage() {
+    currentImageIndex = (currentImageIndex + 1) % appImages.length;
+    document.getElementById('lightbox-img').src = appImages[currentImageIndex].src;
+    document.getElementById('lightbox-caption').textContent = appImages[currentImageIndex].caption + ` (${currentImageIndex + 1}/4)`;
+}
+
+function prevImage() {
+    currentImageIndex = (currentImageIndex - 1 + appImages.length) % appImages.length;
+    document.getElementById('lightbox-img').src = appImages[currentImageIndex].src;
+    document.getElementById('lightbox-caption').textContent = appImages[currentImageIndex].caption + ` (${currentImageIndex + 1}/4)`;
+}
+
+// Agregar controles de teclado
+document.addEventListener('keydown', function(event) {
+    if (document.getElementById('lightbox').classList.contains('active')) {
+        if (event.key === 'ArrowRight') nextImage();
+        if (event.key === 'ArrowLeft') prevImage();
+        if (event.key === 'Escape') closeLightbox();
+    }
+});
 </script>
 
 </body>
